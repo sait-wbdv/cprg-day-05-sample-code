@@ -1,11 +1,20 @@
 <script setup>
 // TODO: Set up the supabase client
-
+const supabase = useSupabaseClient();
 // TODO: set up input variables
+const email = ref("");
+const password = ref(null);
 
 // TODO: create sign in function
-
+async function signIn() {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email.value,
+    password: password.value,
+  });
+  if (error) throw error;
+}
 // TODO: access the logged in user and show the users information
+const user = useSupabaseUser();
 </script>
 <template>
   <main>
@@ -25,6 +34,7 @@
     <section>
       <h1>Active user information</h1>
       <!-- Show user information -->
+      <pre>{{ user }}</pre>
     </section>
   </main>
 </template>
