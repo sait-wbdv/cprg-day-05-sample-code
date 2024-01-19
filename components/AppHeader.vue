@@ -1,3 +1,6 @@
+<script setup>
+const user = useSupabaseUser();
+</script>
 <template>
   <header>
     <div>LOGO</div>
@@ -5,7 +8,8 @@
       <NuxtLink to="login">Log In</NuxtLink>
       <NuxtLink to="signup">Sign Up</NuxtLink>
     </nav>
-    <div>
+    <div class="buttons">
+      <p v-if="user">{{ user.email }}</p>
       <Logout />
     </div>
   </header>
@@ -30,5 +34,9 @@ div {
 }
 a:hover {
   color: lightblue;
+}
+.buttons {
+  display: flex;
+  gap: 8px;
 }
 </style>

@@ -34,7 +34,7 @@ const user = useSupabaseUser();
     <section>
       <h1>Active user information</h1>
       <!-- Show user information -->
-      <pre>{{ user }}</pre>
+      <p>{{ user.email }}</p>
     </section>
   </main>
 </template>
